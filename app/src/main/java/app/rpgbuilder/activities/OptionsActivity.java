@@ -19,7 +19,7 @@ public final class OptionsActivity extends AppCompatActivity {
 
         final RecyclerView layout = findViewById(R.id.option_adapter);
 
-        layout.setLayoutManager(new GridLayoutManager(this, 3));
+        layout.setLayoutManager(new GridLayoutManager(this, 2));
         layout.setAdapter(new OptionsAdapter());
     }
 

@@ -24,8 +24,8 @@ public final class OptionsAdapter extends Adapter<OptionViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull OptionViewHolder holder, int position) {
-        holder.getOptionName().setText(OptionsRepository.getOption(position).getName());
-        holder.getOptionButton().setImageResource(OptionsRepository.getOption(position).getImgResource());
+        holder.getOptionName().setText(OptionsRepository.getOption(position).name());
+        holder.getOptionButton().setImageResource(OptionsRepository.getOption(position).imgResource());
 
         holder.getOptionButton().setOnClickListener(view -> {
 
