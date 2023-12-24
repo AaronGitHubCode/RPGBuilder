@@ -5,7 +5,6 @@ import android.app.Service;
 import android.content.Intent;
 
 import android.os.IBinder;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -25,7 +24,6 @@ public final class AutoSaveService extends Service {
                 if (actualDate.getTime().equals(saveTime.getTime())) {
                     saveTime = Calendar.getInstance();
                     saveTime.set(Calendar.SECOND, saveTime.get(Calendar.MINUTE) + 30);
-                    Log.i("saved", "DATA SAVED SUCCESSFULLY!");
                 }
             }
         }).start();

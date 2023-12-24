@@ -6,12 +6,10 @@ public class Potion extends Item
 implements IHealerItem {
     private Entity entity;
 
-    private final int healthPoints;
+    private static final int healthPoints = 10;
 
-    public Potion(final int healthPoints) {
-        super("", "");
-
-        this.healthPoints = healthPoints;
+    public Potion() {
+        super("Potion", "A simple potion to restore a little portion of health.");
 
         id = "POTION_ITEM";
     }

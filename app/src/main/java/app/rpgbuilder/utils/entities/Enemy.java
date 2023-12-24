@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class Enemy extends Entity
 implements IBattler {
-
     private int level;
 
     private int strength;

@@ -8,22 +8,30 @@ import static androidx.activity.result.contract.ActivityResultContracts.StartAct
 import app.rpgbuilder.AutoSaveService;
 import app.rpgbuilder.R;
 
-import app.rpgbuilder.views.FlickerTextView;
-
 import android.content.pm.PackageManager;
+
 import android.os.Build;
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.util.Log;
+
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.activity.result.ActivityResultLauncher;
 
+import android.widget.TextView;
+
 import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.motion.widget.MotionLayout;
 
 public final class MainActivity extends AppCompatActivity {
-    private FlickerTextView startButton;
+    private TextView startButton;
+
+    private Toolbar toolbar;
+
+    private MotionLayout motionLayout;
 
     private final ActivityResultLauncher<Intent> activityLauncher = registerForActivityResult(new StartActivityForResult(), result -> {
         final Intent intent = result.getData();
@@ -39,6 +47,8 @@ public final class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
+
+        setSupportActionBar(toolbar);
 
         startButton = findViewById(R.id.start_button);
 

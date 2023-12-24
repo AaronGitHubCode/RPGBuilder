@@ -7,7 +7,7 @@ public abstract class Entity {
 
     private int health;
 
-    private String name;
+    private final String name;
 
     private Vector2 position;
 
@@ -32,6 +32,17 @@ public abstract class Entity {
 
     public void setHealth(final int health) {
         this.health = health;
+    }
+
+    public boolean isAlive() {
+        return health > 0;
+    }
+
+    public void takeDamage(final int damagePoints) {
+        if (health - damagePoints >= 0)
+            health -= damagePoints;
+        else
+            health = 0;
     }
 
     public String getName() {

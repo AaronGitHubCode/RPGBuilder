@@ -6,6 +6,9 @@ import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import static android.view.LayoutInflater.from;
 
 import app.rpgbuilder.R;
+import app.rpgbuilder.activities.SceneBuilderActivity;
+
+import android.content.Intent;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +27,13 @@ public final class OptionsAdapter extends Adapter<OptionViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull OptionViewHolder holder, int position) {
-        holder.getOptionName().setText(OptionsRepository.getOption(position).name());
-        holder.getOptionButton().setImageResource(OptionsRepository.getOption(position).imgResource());
+        holder.getOptionName().setText(OptionsRepository.getOption(position).getName());
+        holder.getOptionButton().setImageResource(OptionsRepository.getOption(position).getImgResource());
 
         holder.getOptionButton().setOnClickListener(view -> {
-
+            switch (OptionsRepository.getOption(position).getName()) {
+                case "Builder" -> holder.getOptionName().getContext().startActivity(new Intent(holder.getOptionName().getContext(), SceneBuilderActivity.class));
+            }
         });
     }
 
