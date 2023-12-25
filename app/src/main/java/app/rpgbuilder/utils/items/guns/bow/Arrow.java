@@ -1,11 +1,8 @@
 package app.rpgbuilder.utils.items.guns.bow;
 
-import static java.lang.Math.round;
-import static java.lang.Math.random;
-
 import app.rpgbuilder.utils.entities.Entity;
 
-import app.rpgbuilder.utils.items.guns.Gun;
+import java.util.Random;
 
 public class Arrow {
     private final Bow bindedBow;
@@ -31,14 +28,9 @@ public class Arrow {
     }
 
     public ArrowState throwArrow(final Entity entity) {
-        final var rand = (int) round(random() * 100);
+        final int rand = new Random().nextInt(100);
 
-        if (bindedBow.getAim() >= rand) {
-            entity.takeDamage(damagePoints);
-            return ArrowState.SUCCESS;
-        }
-
-        return ArrowState.FAILED;
+        return rand >= 50 ? ArrowState.SUCCESS : ArrowState.FAILED;
     }
 
 }
