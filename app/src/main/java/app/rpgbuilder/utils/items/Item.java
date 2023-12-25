@@ -38,11 +38,4 @@ implements IItemLike {
     protected final void setDescription(final String description) {
         this.description = description;
     }
-
-    @Override
-    public boolean equals(final Object other) {
-        final Item item = (Item) other;
-
-        return id.equals(item.id);
-    }
 }

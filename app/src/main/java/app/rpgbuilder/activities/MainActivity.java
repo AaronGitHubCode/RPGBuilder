@@ -10,6 +10,7 @@ import app.rpgbuilder.R;
 
 import android.content.pm.PackageManager;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -24,14 +25,12 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.motion.widget.MotionLayout;
 
 public final class MainActivity extends AppCompatActivity {
+
     private TextView startButton;
 
     private Toolbar toolbar;
-
-    private MotionLayout motionLayout;
 
     private final ActivityResultLauncher<Intent> activityLauncher = registerForActivityResult(new StartActivityForResult(), result -> {
         final Intent intent = result.getData();
@@ -42,11 +41,14 @@ public final class MainActivity extends AppCompatActivity {
             finish();
     });
 
+    public MainActivity() {
+        super(R.layout.main_layout);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_layout);
 
         setSupportActionBar(toolbar);
 
@@ -64,11 +66,14 @@ public final class MainActivity extends AppCompatActivity {
 
         startButton.setOnClickListener(view -> {
             activityLauncher.launch(new Intent(this, OptionsActivity.class));
+            startButton.setTextColor(Color.RED);
         });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        startButton.setTextColor(Color.WHITE);
     }
 }

@@ -4,8 +4,7 @@ import app.rpgbuilder.math.Vector2;
 
 import java.util.Random;
 
-public class Enemy extends Entity
-implements IBattler {
+public class Enemy extends Entity {
     private int level;
 
     private int strength;
@@ -15,13 +14,7 @@ implements IBattler {
         super(health, name, position);
     }
 
-    @Override
     public void attack(final Entity entity) {
         entity.setHealth(Math.min(entity.getHealth() - strength, 0));
-    }
-
-    @Override
-    public void deffend() {
-
     }
 }

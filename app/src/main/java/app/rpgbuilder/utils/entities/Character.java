@@ -11,7 +11,7 @@ public class Character extends Entity {
         inventory = new Inventory();
     }
 
-    public Inventory getInventory() {
+    public final Inventory getInventory() {
         return inventory;
     }
 }

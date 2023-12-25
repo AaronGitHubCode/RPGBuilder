@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/icon_animation"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    app:layoutDescription="@xml/option_icon_scene">
+    android:layout_margin="10dp">
 
     <ImageButton
         android:id="@+id/option_button"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_margin="20dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="@drawable/option_selector"
         android:elevation="10dp"
         android:src="@drawable/sword"
@@ -29,4 +31,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/option_button" />
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

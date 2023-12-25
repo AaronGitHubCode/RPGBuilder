@@ -6,11 +6,13 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 
-public class SoftNotification {
+public final class SoftNotification {
     private static final int SOFT_INTEGER_ID = 100;
 
     private static final String SOFT_STRING_ID = "SOFT_NOTIFICATION_ID";
     private static final String SOFT_STRING_NAME = "SOFT_NOTIFICATION_NAME";
+
+    private SoftNotification() {}
 
     public static void sendNotification(final Context applicationContext, final String title, final int smallIcon) {
         final var notificationManager = (NotificationManager) applicationContext.getSystemService(Context.NOTIFICATION_SERVICE);
