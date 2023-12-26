@@ -49,11 +49,11 @@ public class Bow extends Gun {
     }
 
     public boolean isMunitionEmpty() {
-        return munition == 0;
+        return munition != 0;
     }
 
     public void shoot(final Entity entity) {
-        if (! isMunitionEmpty()) {
+        if (isMunitionEmpty()) {
             if (arrows[munition - 1].throwArrow(entity) == Arrow.ArrowState.SUCCESS) {
                 entity.takeDamage(arrows[munition - 1].getDamagePoints());
                 arrows[munition - 1] = null;

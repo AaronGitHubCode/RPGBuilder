@@ -1,6 +1,7 @@
 package app.rpgbuilder.utils.entities;
 
 import app.rpgbuilder.math.Vector2;
+import app.rpgbuilder.scene.OnAreaListener;
 
 public abstract class Entity {
     public final int MAX_HEALTH;

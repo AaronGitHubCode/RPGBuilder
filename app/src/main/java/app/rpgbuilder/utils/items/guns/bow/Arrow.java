@@ -6,11 +6,15 @@
 
 package app.rpgbuilder.utils.items.guns.bow;
 
+import app.rpgbuilder.scene.OnAreaListener;
+
 import app.rpgbuilder.utils.entities.Entity;
+
+import app.rpgbuilder.utils.items.Item;
 
 import java.util.Random;
 
-public class Arrow {
+public class Arrow extends Item {
     private final Bow bindedBow;
 
     private final int damagePoints;
@@ -30,16 +34,18 @@ public class Arrow {
 
     /**
     *    Constructor objeto Arrow
-    *    @param bindedArrow Referencia a un objeto de tipo Bow para obtener sus estadísticas.
+    *    @param bindedBow Referencia a un objeto de tipo Bow para obtener sus estadísticas.
     *    @param damagePoints Los puntos de daños que puede causar la flecha al acertar el tiro a un enemigo. 
     */
     public Arrow(final Bow bindedBow, final int damagePoints) {
+        super(0, "Arrow", "Simple arrow with nothing special");
+
         this.bindedBow = bindedBow;
         this.damagePoints = damagePoints;
     }
 
     /**
-    *    @params entity
+    *    @param entity
     *    Referencia a la entidad a la que se le está lanzando la flecha.
     *    @return
     *    Devuelve el estado de la flecha.
@@ -50,4 +56,8 @@ public class Arrow {
         return rand >= 50 ? ArrowState.SUCCESS : ArrowState.FAILED;
     }
 
+    @Override
+    public void drop() {
+        areaListener.onAreaChanged(this);
+    }
 }
