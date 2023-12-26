@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Area
 implements OnAreaListener {
-    private Date areaCreationDate;
+    private final Date areaCreationDate;
 
     private final List<Item> areaItems;
 
