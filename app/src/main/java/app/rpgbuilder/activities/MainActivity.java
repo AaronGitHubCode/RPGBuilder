@@ -5,6 +5,8 @@ import static android.Manifest.permission.POST_NOTIFICATIONS;
 import static androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions;
 import static androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult;
 
+import static android.util.Log.i;
+
 import app.rpgbuilder.AutoSaveService;
 import app.rpgbuilder.R;
 
@@ -26,11 +28,9 @@ import androidx.annotation.RequiresApi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 public final class MainActivity extends AppCompatActivity {
-
-    private TextView startButton;
-
-    private Toolbar toolbar;
 
     private final ActivityResultLauncher<Intent> activityLauncher = registerForActivityResult(new StartActivityForResult(), result -> {
         final Intent intent = result.getData();
@@ -50,9 +50,7 @@ public final class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setSupportActionBar(toolbar);
-
-        startButton = findViewById(R.id.start_button);
+        setSupportActionBar(findViewById(R.id.toolbar));
 
         if (checkSelfPermission(POST_NOTIFICATIONS) == PackageManager.PERMISSION_DENIED)
             permissionsLauncher.launch(new String[]{POST_NOTIFICATIONS});
@@ -64,9 +62,11 @@ public final class MainActivity extends AppCompatActivity {
 
         startService(new Intent(this, AutoSaveService.class));
 
-        startButton.setOnClickListener(view -> {
+        findViewById(R.id.start_button).setOnClickListener(view -> {
+            final TextView self = (TextView) view;
+
             activityLauncher.launch(new Intent(this, OptionsActivity.class));
-            startButton.setTextColor(Color.RED);
+            self.setTextColor(Color.RED);
         });
     }
 
@@ -74,6 +74,7 @@ public final class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        final TextView startButton = findViewById(R.id.start_button);
         startButton.setTextColor(Color.WHITE);
     }
 }
