@@ -8,7 +8,7 @@ import java.util.Date;
 public abstract class Item
 implements IItemLike {
 
-    private Date itemSpawnedTime;
+    private final Date itemSpawnedTime;
 
     private int imageResource;
 

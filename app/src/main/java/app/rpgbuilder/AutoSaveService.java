@@ -12,6 +12,9 @@ import java.util.Calendar;
 
 public final class AutoSaveService extends Service {
 
+    /**
+     * Every 30 minutes, is saved the data game.
+     * */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         new Thread(()-> {

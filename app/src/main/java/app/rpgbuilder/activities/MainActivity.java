@@ -5,8 +5,6 @@ import static android.Manifest.permission.POST_NOTIFICATIONS;
 import static androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions;
 import static androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult;
 
-import static android.util.Log.i;
-
 import app.rpgbuilder.AutoSaveService;
 import app.rpgbuilder.R;
 
@@ -17,8 +15,6 @@ import android.os.Build;
 import android.os.Bundle;
 
 import android.content.Intent;
-
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.activity.result.ActivityResultLauncher;
 
@@ -76,5 +72,15 @@ public final class MainActivity extends AppCompatActivity {
 
         final TextView startButton = findViewById(R.id.start_button);
         startButton.setTextColor(Color.WHITE);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

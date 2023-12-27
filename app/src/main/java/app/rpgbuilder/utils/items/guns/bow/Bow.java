@@ -24,6 +24,8 @@ public class Bow extends Gun {
     }
 
     public Bow(final BowProperties properties) {
+        super(0, "Arrow", "Arrow description");
+
         this.properties = properties;
 
         arrows = initializeArrows(this);
@@ -65,6 +67,6 @@ public class Bow extends Gun {
 
     @Override
     public void drop() {
-
+        areaListener.onAreaChanged(this);
     }
 }

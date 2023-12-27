@@ -1,7 +1,5 @@
 package app.rpgbuilder.scene;
 
-import app.rpgbuilder.utils.entities.Entity;
-import app.rpgbuilder.utils.items.IItemLike;
 import app.rpgbuilder.utils.items.Item;
 
 import java.util.Calendar;
@@ -11,7 +9,7 @@ import java.util.List;
 
 public class Area
 implements OnAreaListener {
-    private final Date areaCreationDate;
+    private Date areaCreationDate;
 
     private final List<Item> areaItems;
 
@@ -38,20 +36,20 @@ implements OnAreaListener {
 
     /*TODO: Area should be delete a item of areaItems every 3 minutes...*/
     @Override
-    public boolean onAreaChanged(Item it) {
-        boolean checker = false;
+    public void onAreaChanged(Item item) {
+        if (item != null)
+            areaItems.add(item);
 
-        for (final Item item : areaItems) {
-            if (item.areaListener != null) {
-                checker = true;
+        for (final Item it : areaItems) {
+            if (it.getItemSpawnedTime().getTime() >= areaCreationDate.getTime()) {
+                areaItems.remove(areaItems.size() - 1);
+                final Calendar time = Calendar.getInstance();
+                time.set(Calendar.MINUTE, Calendar.MINUTE + 3);
+
+                areaCreationDate = time.getTime();
+
                 break;
             }
         }
-
-        if (it.getItemSpawnedTime().getTime() > areaCreationDate.getTime()) {
-
-        }
-
-        return checker;
     }
 }

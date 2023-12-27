@@ -3,8 +3,12 @@ package app.rpgbuilder.activities;
 import android.os.Bundle;
 
 import app.rpgbuilder.R;
+import app.rpgbuilder.adapters.books.BooksAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public final class LibraryActivity extends AppCompatActivity {
 
@@ -16,6 +20,9 @@ public final class LibraryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        final RecyclerView layout = findViewById(R.id.book_adapter);
 
+        layout.setLayoutManager(new GridLayoutManager(this, 1));
+        layout.setAdapter(new BooksAdapter());
     }
 }
