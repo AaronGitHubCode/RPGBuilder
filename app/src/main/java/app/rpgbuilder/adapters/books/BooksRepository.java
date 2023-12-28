@@ -1,5 +1,7 @@
 package app.rpgbuilder.adapters.books;
 
+import app.rpgbuilder.library.Page;
+
 public final class BooksRepository {
 
     private BooksRepository() {}
@@ -8,8 +10,8 @@ public final class BooksRepository {
 
     static {
         books = new Book[] {
-            new Book("Wizard", "For a new wizard's"),
-                new Book("Potion lessons", "Test")
+            new Book("Wizard", "For a new wizard's", new Page[] {}),
+                new Book("Potion lessons", "Test", new Page[] {})
         };
     }
 

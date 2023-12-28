@@ -2,6 +2,8 @@ package app.rpgbuilder.adapters.books;
 
 import app.rpgbuilder.R;
 
+import app.rpgbuilder.library.Page;
+
 public final class Book {
 
     public static final int BOOK_ICON = R.drawable.book;
@@ -9,9 +11,12 @@ public final class Book {
     private final String title;
     private final String content;
 
-    public Book(String title, String content) {
+    private final Page[] pages;
+
+    public Book(String title, String content, Page[] pages) {
         this.title = title;
         this.content = content;
+        this.pages = pages;
     }
 
     public String getTitle() {
@@ -20,6 +25,10 @@ public final class Book {
 
     public String getContent() {
         return content;
+    }
+
+    public Page getPage(int position) {
+        return pages[position];
     }
 
     @Override

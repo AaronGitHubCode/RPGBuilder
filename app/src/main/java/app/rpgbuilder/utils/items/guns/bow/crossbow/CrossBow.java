@@ -2,24 +2,29 @@ package app.rpgbuilder.utils.items.guns.bow.crossbow;
 
 import app.rpgbuilder.utils.entities.Entity;
 
-import app.rpgbuilder.utils.items.guns.bow.Arrow;
 import app.rpgbuilder.utils.items.guns.bow.Bow;
 
+import java.util.List;
+
+/**
+ * @author AaronGitHubCode
+ * @version 0.2.1
+ * */
 public class CrossBow extends Bow {
     public CrossBow(BowProperties properties) {
         super(properties);
     }
 
+    /**
+     * <h1>#multipleShoot</h1>
+     * <hr/><br/>
+     * Shoot a arrow to all entities marked.
+     * @param entities The attacked entities.
+     * */
     public void multipleShoot(Entity... entities) {
-        for (final Entity entity : entities) {
-            if (isMunitionEmpty()) {
-                if (arrows[munition - 1].throwArrow(entity) == Arrow.ArrowState.SUCCESS) {
-                    entity.takeDamage(arrows[munition - 1].getDamagePoints());
-                    arrows[munition - 1] = null;
-                }
+        if (entities.length > 3)
+            return;
 
-                looseArrow();
-            }
-        }
+        List.of(entities).forEach(this::shoot);
     }
 }

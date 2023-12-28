@@ -6,6 +6,7 @@ import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import static android.view.LayoutInflater.from;
 
 import app.rpgbuilder.R;
+import app.rpgbuilder.activities.BattleActivity;
 import app.rpgbuilder.activities.LibraryActivity;
 import app.rpgbuilder.activities.SceneBuilderActivity;
 
@@ -36,7 +37,7 @@ public final class OptionsAdapter extends Adapter<OptionViewHolder> {
 
         holder.getOptionButton().setOnClickListener(view -> {
             switch (OptionsRepository.getOption(position).getName()) {
-                case "Adventure" -> {}
+                case "Adventure" -> context.startActivity(new Intent(context, BattleActivity.class));
                 case "Builder" -> context.startActivity(new Intent(context, SceneBuilderActivity.class));
                 case "Library" -> context.startActivity(new Intent(context, LibraryActivity.class));
             }
