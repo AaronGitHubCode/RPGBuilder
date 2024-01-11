@@ -15,7 +15,7 @@ class OptionsActivity : AppCompatActivity(R.layout.options_layout) {
 
         val mainMenuFragment = MainMenuFragment(OptionsAdapter())
 
-        mainMenuFragment.optionsAdapter.setOnFragmentChange { fragment, tag ->
+        mainMenuFragment.optionsAdapter.setOnFragmentChangeListener { fragment, tag ->
             supportFragmentManager.beginTransaction().let {
                 it.replace(R.id.fragment_container_view, fragment, tag)
                 it.commit()

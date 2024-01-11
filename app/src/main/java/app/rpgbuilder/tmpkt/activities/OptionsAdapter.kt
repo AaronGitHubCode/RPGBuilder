@@ -14,15 +14,15 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 class OptionsAdapter : Adapter<OptionsAdapter.OptionViewHolder>() {
 
-    private lateinit var onFragmentChange: OnFragmentChangeListener
+    private lateinit var onFragmentChangeListener: OnFragmentChangeListener
 
     inner class OptionViewHolder constructor(view: View) : ViewHolder(view) {
         internal val optionButton = view.findViewById<ImageView>(R.id.option_button)
         internal val optionName = view.findViewById<TextView>(R.id.option_name)
     }
 
-    fun setOnFragmentChange(onFragmentChange: OnFragmentChangeListener): Unit {
-        this.onFragmentChange = onFragmentChange
+    fun setOnFragmentChangeListener(onFragmentChangeListener: OnFragmentChangeListener): Unit {
+        this.onFragmentChangeListener = onFragmentChangeListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionViewHolder =
@@ -37,7 +37,7 @@ class OptionsAdapter : Adapter<OptionsAdapter.OptionViewHolder>() {
 
             when (position) {
                 1 -> {
-                    onFragmentChange.onChange(LibraryFragment(), "library_fragment")
+                    onFragmentChangeListener.onChange(LibraryFragment(), "library_fragment")
                 }
             }
         }
