@@ -57,6 +57,10 @@ public class Bow extends Gun {
         return properties.speed();
     }
 
+    protected BowProperties getProperties() {
+        return properties;
+    }
+
     protected void looseArrow() {
         if (munition-- < 0)
             munition = 0;

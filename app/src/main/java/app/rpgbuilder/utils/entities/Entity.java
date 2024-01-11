@@ -1,8 +1,5 @@
 package app.rpgbuilder.utils.entities;
 
-import app.rpgbuilder.math.Vector2;
-import app.rpgbuilder.scene.OnAreaListener;
-
 public abstract class Entity {
     public final int MAX_HEALTH;
 
@@ -10,21 +7,11 @@ public abstract class Entity {
 
     private final String name;
 
-    private Vector2 position;
-
     public Entity(final int health, final String name) {
         MAX_HEALTH = health;
 
         this.health = health;
         this.name = name;
-    }
-
-    public Entity(final int health, final String name, final Vector2 position) {
-        MAX_HEALTH = health;
-
-        this.health = health;
-        this.name = name;
-        this.position = position;
     }
 
     public int getHealth() {
@@ -48,13 +35,5 @@ public abstract class Entity {
 
     public String getName() {
         return name;
-    }
-
-    public int x() {
-        return position.getX();
-    }
-
-    public int y() {
-        return position.getY();
     }
 }

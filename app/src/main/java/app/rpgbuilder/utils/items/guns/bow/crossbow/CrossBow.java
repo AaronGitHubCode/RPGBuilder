@@ -11,6 +11,7 @@ import java.util.List;
  * @version 0.2.1
  * */
 public class CrossBow extends Bow {
+
     public CrossBow(BowProperties properties) {
         super(properties);
     }

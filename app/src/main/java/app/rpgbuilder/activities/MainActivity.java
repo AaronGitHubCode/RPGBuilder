@@ -11,6 +11,7 @@ import app.rpgbuilder.R;
 import android.content.pm.PackageManager;
 
 import android.graphics.Color;
+
 import android.os.Build;
 import android.os.Bundle;
 
@@ -26,16 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-public final class MainActivity extends AppCompatActivity {
-
-    private final ActivityResultLauncher<Intent> activityLauncher = registerForActivityResult(new StartActivityForResult(), result -> {
-        final Intent intent = result.getData();
-    });
-
-    private final ActivityResultLauncher<String[]> permissionsLauncher = registerForActivityResult(new RequestMultiplePermissions(), permissions -> {
-        if (permissions.containsValue(false))
-            finish();
-    });
+public final class MainActivity extends NotificationBaseActivity {
 
     public MainActivity() {
         super(R.layout.main_layout);
@@ -46,15 +38,27 @@ public final class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /*
+        final var permissionsLauncher = registerForActivityResult(new RequestMultiplePermissions(), permissions -> {
+            if (permissions.containsValue(false))
+                finish();
+        });
+        */
+
         setSupportActionBar(findViewById(R.id.toolbar));
 
         if (checkSelfPermission(POST_NOTIFICATIONS) == PackageManager.PERMISSION_DENIED)
-            permissionsLauncher.launch(new String[]{POST_NOTIFICATIONS});
+            requestPermissions(new String[] {POST_NOTIFICATIONS}, APPLICATION_REQUEST_CODE);
+            //permissionsLauncher.launch(new String[]{POST_NOTIFICATIONS});
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        final var activityLauncher = registerForActivityResult(new StartActivityForResult(), result -> {
+            final Intent intent = result.getData();
+        });
 
         startService(new Intent(this, AutoSaveService.class));
 

@@ -5,10 +5,14 @@ import android.os.Bundle;
 import app.rpgbuilder.R;
 import app.rpgbuilder.adapters.books.BooksAdapter;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class LibraryActivity extends AppCompatActivity {
 
@@ -24,5 +28,11 @@ public final class LibraryActivity extends AppCompatActivity {
 
         layout.setLayoutManager(new GridLayoutManager(this, 1));
         layout.setAdapter(new BooksAdapter());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 }

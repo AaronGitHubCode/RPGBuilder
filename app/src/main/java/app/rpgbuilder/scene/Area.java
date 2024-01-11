@@ -26,10 +26,6 @@ implements OnAreaListener {
         areaItems = new ArrayList<>();
     }
 
-    public void addItemToAreaContainer(Item item) {
-        areaItems.add(item);
-    }
-
     protected List<Item> getAreaItems() {
         return areaItems;
     }
@@ -38,7 +34,7 @@ implements OnAreaListener {
     @Override
     public void onAreaChanged(Item item) {
         if (item != null)
-            areaItems.add(item);
+            initializeAreaListener(item);
 
         for (final Item it : areaItems) {
             if (it.getItemSpawnedTime().getTime() >= areaCreationDate.getTime()) {

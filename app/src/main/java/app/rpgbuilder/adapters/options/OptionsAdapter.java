@@ -36,6 +36,8 @@ public final class OptionsAdapter extends Adapter<OptionViewHolder> {
         holder.getOptionButton().setImageResource(OptionsRepository.getOption(position).getImgResource());
 
         holder.getOptionButton().setOnClickListener(view -> {
+            final ImageButton button = (ImageButton) view;
+
             switch (OptionsRepository.getOption(position).getName()) {
                 case "Adventure" -> context.startActivity(new Intent(context, BattleActivity.class));
                 case "Builder" -> context.startActivity(new Intent(context, SceneBuilderActivity.class));

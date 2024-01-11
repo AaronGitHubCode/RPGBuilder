@@ -2,6 +2,7 @@ package app.rpgbuilder.activities;
 
 import app.rpgbuilder.R;
 import app.rpgbuilder.adapters.options.OptionsAdapter;
+import app.rpgbuilder.fragments.MenuFragment;
 
 import android.os.Bundle;
 
@@ -12,24 +13,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public final class OptionsActivity extends AppCompatActivity {
 
+    public OptionsActivity() {
+        super(R.layout.options_layout);
+    }
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.options_layout);
 
-        final RecyclerView layout = findViewById(R.id.option_adapter);
+        final var recyclerView = findViewById(R.id.recyclerView);
 
-        layout.setLayoutManager(new GridLayoutManager(this, 2));
-        layout.setAdapter(new OptionsAdapter());
-    }
+        final var fragmentManager = getSupportFragmentManager();
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
+        final var transaction = fragmentManager.beginTransaction();
+        fragmentManager.putFragment(savedInstanceState, "MENU", new MenuFragment());
+        transaction.commit();
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+
+        if (recyclerView instanceof RecyclerView rv) {
+            rv.setLayoutManager(new GridLayoutManager(this, 1));
+            rv.setAdapter(new OptionsAdapter());
+        } else
+            finish();
     }
 }

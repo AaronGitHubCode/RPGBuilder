@@ -1,5 +1,8 @@
 package app.rpgbuilder.adapters.books;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 import app.rpgbuilder.library.Page;
 
 public final class BooksRepository {
